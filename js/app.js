@@ -49,6 +49,37 @@ const  exploreNow = phoneSlug =>{
 //    console.log(url);
    fetch(url)
    .then(res => res.json())
-   .then(data =>console.log(data))
+   .then(data =>displayPhoneDetails(data))
    
+}
+
+/*===========displayPhoneDetails=============*/
+
+const displayPhoneDetails = phone =>{
+    // console.log(phone)
+
+const showDetails = document.getElementById('phone-details')
+    const div = document.createElement('div');
+    div.classList.add('col');
+    
+    div.innerHTML = `
+    <div class="card w-50 h-100 align-center text-center">
+        <img  src="${phone.data.image}" class="card-img-top img-fluid w-100 " alt="...">
+        <div class="card-body">
+            <h5 class="card-title">${phone.data.mainFeatures.storage}</h5>
+            <h5 class="card-title">${phone.data.mainFeatures.displaySize}</h5>
+            <h5 class="card-title">${phone.data.mainFeatures.chipSet}</h5>
+            <h5 class="card-title">${phone.data.mainFeatures.memory}</h5>
+            <h5 class="card-title">${phone.data.mainFeatures.sensors}</h5>
+            <h5 class="card-title">${phone.data.releaseDate}</h5>
+           
+            
+          
+        </div>
+
+    </div>
+    `;
+    showDetails.appendChild(div);
+  
+
 }
