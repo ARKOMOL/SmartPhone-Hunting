@@ -1,10 +1,22 @@
 
 const searchPhones = ()=>{
     const searchField = document.getElementById('search-box');
-    const searchValue = searchField.value;
+    const searchText = searchField.value;
     searchField.value= '';
-    const url = (`https://openapi.programming-hero.com/api/phones?search=${searchValue}`)
+    const url = (`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
     fetch(url)
     .then(res => res.json())
-    .then(data =>console.log(data))
+    .then(data =>displaySearchResult(data.data))
+}
+// searchPhones()
+const displaySearchResult = phones =>{
+    // console.log(phones)
+    const searchResult = document.getElementById('search-result');
+    searchResult.textContent = '';
+    phones.forEach(phone =>{
+        console.log(phone);
+    })
+  
+
+
 }
