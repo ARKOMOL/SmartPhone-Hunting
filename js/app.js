@@ -30,7 +30,8 @@ const displaySearchResult = phones =>{
                 <p class="card-text">${phone.slug}</p>
 
             </div>
-       
+            <button onclick="exploreNow('${phone.slug}')" > Show Details</button>
+
         </div>
         `;
         searchResult.appendChild(div);
@@ -40,3 +41,14 @@ const displaySearchResult = phones =>{
   
 }
 
+/*==============Explore Part=============*/
+
+const  exploreNow = phoneSlug =>{
+    console.log(phoneSlug)
+   const url = `https://openapi.programming-hero.com/api/phone/${phoneSlug}`
+//    console.log(url);
+   fetch(url)
+   .then(res => res.json())
+   .then(data =>console.log(data))
+   
+}
