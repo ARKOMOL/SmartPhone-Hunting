@@ -19,7 +19,7 @@ const searchPhones = ()=>{
     spinerToggle('block')
     // document.getElementById('error-message').style.display = 'none';
   
-    if(searchText=== ''|| searchText.length === 0){
+    if(searchText=== ''){
         document.getElementById('error-message').style.display = 'block';
        
     }
@@ -69,6 +69,8 @@ else{
           
             spinerToggle('none')
         })
+        document.getElementById('error-message2').style.display = 'none';
+
 }
 
   
@@ -93,7 +95,7 @@ const displayPhoneDetails = phone =>{
     // console.log(phone)
 
 const showDetails = document.getElementById('phone-details');
-showDetails.textContent = '';
+showDetails.innerHTML = '';
     const div = document.createElement('div');
     div.classList.add('col');
     
@@ -134,5 +136,8 @@ showDetails.textContent = '';
     `;
     showDetails.appendChild(div);
   
+    document.getElementById('error-message').style.display = 'none';
+    document.getElementById('error-message2').style.display = 'none';
+
 }
 
