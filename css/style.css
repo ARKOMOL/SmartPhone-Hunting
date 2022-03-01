@@ -2,3 +2,11 @@
     height: 200px;
 width: 200px;
 }
+button {
+    border-radius: 200px;
+    margin: 10px 40px;
+    background: #0e9cdfdb;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
