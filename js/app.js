@@ -4,15 +4,27 @@ document.getElementById('error-message2').style.display = 'none';
 
 /*===============main part started===================*/
 
+/*spiner  */
+
+const spinerToggle = displayspiner =>{
+    document.getElementById('spiner').style.display = displayspiner;
+}
+const togglePhones = displayphone =>{
+    document.getElementById('phone-details').style.display = displayphone;
+}
+
+
 const searchPhones = ()=>{
     const searchField = document.getElementById('search-box');
     const searchText = searchField.value;
     searchField.value= '';
+    spinerToggle('block');
+    togglePhones('none');
     // document.getElementById('error-message').style.display = 'none';
   
     if(searchText=== ''|| searchText.length === 0){
         document.getElementById('error-message').style.display = 'block';
-       
+        
     }
 
     else{
@@ -20,13 +32,13 @@ const searchPhones = ()=>{
     fetch(url)
     .then(res => res.json())
     .then(data =>displaySearchResult(data.data))
-    .catch(error => displayError(error));
     document.getElementById('error-message').style.display = 'none';
     }
 }
 // searchPhones()
 
 /*=========DisplayPhone=============== */
+
 
 const displaySearchResult = phones =>{
     // console.log(phones)
@@ -58,7 +70,8 @@ else{
             `;
             searchResult.appendChild(div);
           
-         
+            spinerToggle('none');
+            togglePhones('block');
         })
 }
 

@@ -1,12 +1,8 @@
-.card img {
-    height: 200px;
-width: 200px;
+body{
+    background-color: rgba(172, 216, 201, 0.575);
 }
-button {
-    border-radius: 200px;
-    margin: 10px 40px;
-    background: #0e9cdfdb;
-    color: white;
-    font-size: 16px;
-    outline: none;
+
+#spiner{
+    display: none;
+    
 }
