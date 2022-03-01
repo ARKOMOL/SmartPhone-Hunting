@@ -1,12 +1,16 @@
+/*==========error message===========*/
 document.getElementById('error-message').style.display = 'none';
+document.getElementById('error-message2').style.display = 'none';
+
+/*===============main part started===================*/
 
 const searchPhones = ()=>{
     const searchField = document.getElementById('search-box');
     const searchText = searchField.value;
     searchField.value= '';
-    document.getElementById('error-message').style.display = 'none';
+    // document.getElementById('error-message').style.display = 'none';
   
-    if(searchText=== ''|| searchText== 'number'){
+    if(searchText=== ''|| searchText.length === 0){
         document.getElementById('error-message').style.display = 'block';
        
     }
@@ -28,29 +32,35 @@ const displaySearchResult = phones =>{
     // console.log(phones)
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+    // condition 
+    if (phones.length === 0) {
+        document.getElementById('error-message2').style.display = 'block';}
+        
+else{
     
     phones?.slice(0,20).forEach(phone =>{
-    //   console.log(phone);
-        const div = document.createElement('div');
-        div.classList.add('col');
+        //   console.log(phone);
+            const div = document.createElement('div');
+            div.classList.add('col');
+            
+            div.innerHTML = `
+            <div class="card h-100 pt-2 shadow ">
+                <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${phone.brand}</h5>
+                    <h5 class="card-title">${phone.phone_name}</h5>
         
-        div.innerHTML = `
-        <div class="card h-100 pt-2 shadow ">
-            <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${phone.brand}</h5>
-                <h5 class="card-title">${phone.phone_name}</h5>
     
-
+                </div>
+                <button onclick="exploreNow('${phone.slug}')"  class = "rounded-3 bg-info my-3 mx-5 text-light h6 p-2"> Show Details</button>
+    
             </div>
-            <button onclick="exploreNow('${phone.slug}')"  class = "rounded-3 bg-info my-3 mx-5 text-light h6 p-2"> Show Details</button>
-
-        </div>
-        `;
-        searchResult.appendChild(div);
-      
-     
-    })
+            `;
+            searchResult.appendChild(div);
+          
+         
+        })
+}
 
   
 }
