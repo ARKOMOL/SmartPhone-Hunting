@@ -38,6 +38,7 @@ const displaySearchResult = phones =>{
       
      
     })
+
   
 }
 
@@ -49,7 +50,7 @@ const  exploreNow = phoneSlug =>{
 //    console.log(url);
    fetch(url)
    .then(res => res.json())
-   .then(data =>displayPhoneDetails(data))
+   .then(data =>displayPhoneDetails(data.data))
    
 }
 
@@ -58,23 +59,36 @@ const  exploreNow = phoneSlug =>{
 const displayPhoneDetails = phone =>{
     // console.log(phone)
 
-const showDetails = document.getElementById('phone-details')
+const showDetails = document.getElementById('phone-details');
+showDetails.textContent = '';
     const div = document.createElement('div');
     div.classList.add('col');
     
     div.innerHTML = `
-    <div class="card w-50 h-100 align-center text-center">
-        <img  src="${phone.data.image}" class="card-img-top img-fluid w-100 " alt="...">
+    <div class=" card h-100">
+        <img src="${phone.image}" class="card-img-top" alt=""/>
         <div class="card-body">
-            <h5 class="card-title">${phone.data.mainFeatures.storage}</h5>
-            <h5 class="card-title">${phone.data.mainFeatures.displaySize}</h5>
-            <h5 class="card-title">${phone.data.mainFeatures.chipSet}</h5>
-            <h5 class="card-title">${phone.data.mainFeatures.memory}</h5>
-            <h5 class="card-title">${phone.data.mainFeatures.sensors}</h5>
-            <h5 class="card-title">${phone.data.releaseDate}</h5>
-           
-            
+        <h3 class="card-text">${phone.name}</h3>
+    <h5 class="card-text">${phone.releaseDate }|| ${phone.releaseDate!='<h5>not found</h5>'}</h5>
+
+
+        <h4 class="text-info">Main Features</h4>
+            <h5 class="card-title">${phone.mainFeatures.storage}</h5>
+            <h5 class="card-text">${phone.mainFeatures.chipSet}</h5>
+            <h5 class="card-text">${phone.mainFeatures.displaySize}</h5>
+            <h5 class="card-text">${phone.mainFeatures.memory}</h5>
+            <h4 class="text-info">Sensors</h4>
+            <h5 class="card-text">${phone.mainFeatures.sensors}</h5>
           
+           
+
+    <h4 class="text-info">Others</h4>
+        <h5 class="card-text">${phone.others?.WLAN}</h5>
+        <h5 class="card-text">${phone.others?.Bluetooth}</h5>
+        <h5 class="card-text">${phone.others?.GPS}</h5>
+        <h5 class="card-text">${phone.others?.NFC}</h5>
+        <h5 class="card-text">${phone.others?.Radio}</h5>
+        <h5 class="card-text">${phone.others?.USB}</h5>
         </div>
 
     </div>
