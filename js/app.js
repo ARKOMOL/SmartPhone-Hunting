@@ -95,7 +95,7 @@ const displayPhoneDetails = phone =>{
     // console.log(phone)
 
 const showDetails = document.getElementById('phone-details');
-showDetails.innerHTML = '';
+showDetails.textContent = '';
     const div = document.createElement('div');
     div.classList.add('col');
     
